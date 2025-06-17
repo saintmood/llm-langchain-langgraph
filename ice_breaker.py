@@ -3,10 +3,12 @@ from langchain.prompts import PromptTemplate
 from langchain.openai import ChatOpenAI
 
 from third_parties.linkedin import scrape_linkedin_profile
+from agents.linkedin_lookup_agent import lookup as linkedin_lookup_agent
 
-if __name__ == "__main__":
-    load_dotenv()
-    print("Hello LangChain!")
+
+def ice_break_with(name: str):
+    linkedin_url = linkedin_lookup_agent(name=name)
+    linkedin_data = scrape_linkedin_profile(linkedin_profile_url=linkedin_url)
 
     summary_template = """
     given the linkedin information {information} about a person I want you to create:
@@ -19,9 +21,7 @@ if __name__ == "__main__":
         template=summary_template,
     )
     # Initialize the language model
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
-
-    # Create the LLM chain
+    llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
     chain = summary_prompt_template | llm
     linkedin_data = scrape_linkedin_profile(
         linkedin_profile_url="https://www.linkedin.com/in/misha-shchetinin-1042a942/"
@@ -29,3 +29,9 @@ if __name__ == "__main__":
     # Run the chain with a sample name
     res = chain.invoke({"information": linkedin_data})
     print(res)
+
+
+if __name__ == "__main__":
+    load_dotenv()
+    print("Ice Breaker Enter")
+    ice_break_with(name="Misha Shchetinin Capgemini")
