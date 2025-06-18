@@ -1,13 +1,15 @@
+from typing import Tuple
+
 from dotenv import load_dotenv
 from langchain.prompts import PromptTemplate
-from langchain.openai import ChatOpenAI
+from langchain_openai import ChatOpenAI
 
-from output_parsers import summary_parser
-from third_parties.linkedin import scrape_linkedin_profile
 from agents.linkedin_lookup_agent import lookup as linkedin_lookup_agent
+from output_parsers import Summary, summary_parser
+from third_parties.linkedin import scrape_linkedin_profile
 
 
-def ice_break_with(name: str):
+def ice_break_with(name: str) -> Tuple[Summary, str]:
     linkedin_url = linkedin_lookup_agent(name=name)
     linkedin_data = scrape_linkedin_profile(linkedin_profile_url=linkedin_url)
 
@@ -35,8 +37,8 @@ def ice_break_with(name: str):
         linkedin_profile_url="https://www.linkedin.com/in/misha-shchetinin-1042a942/"
     )
     # Run the chain with a sample name
-    res = chain.invoke({"information": linkedin_data})
-    print(res)
+    res: Summary = chain.invoke({"information": linkedin_data})
+    return res, linkedin_data.get("photoUrl")
 
 
 if __name__ == "__main__":
