@@ -1,0 +1,30 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+langchain = "*"
+beautifulsoup4 = "*"
+black = "*"
+tiktoken = "*"
+openai = "*"
+unstructured = "*"
+nltk = "*"
+fastapi = "*"
+jinja2 = "*"
+uvicorn = "*"
+streamlit-chat = "*"
+tqdm = "*"
+langchain-pinecone = "*"
+langchain-openai = "*"
+python-dotenv = "*"
+langchain-community = "*"
+streamlit = "*"
+
+[dev-packages]
+ipdb = "*"
+isort = "*"
+
+[requires]
+python_version = "3.12"
