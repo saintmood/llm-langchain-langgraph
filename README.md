@@ -16,3 +16,6 @@ The implementation of chat should be able to parse income data as a csv, perform
 
 This requires additional security protection, since this is remote code execution literraly. If the intruder deliver the exploit and 
 modify the prompt the exploited code, which will be executed by the agnet will cause the security breach.
+
+### CSV Agent
+The first interation of implementation ends with a basic functionality which can answer to simple quesions like "How many columns do we have in the file ?". However, there is a limitation, and *not* all content from the file has been sent to the llm. Instead of that it was just a portion because of the size of context. 
