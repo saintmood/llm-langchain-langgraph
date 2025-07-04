@@ -12,6 +12,9 @@ langchain-community = "*"
 tavily-python = "*"
 chromadb = "*"
 python-dotenv = "*"
+langchain-openai = "*"
+langchain-chroma = "*"
+langchain-tavily = "*"
 
 [dev-packages]
 isort = "*"
