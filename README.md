@@ -16,3 +16,8 @@ General idea of these papers is to add a reflection into the flow.
 
 ### Self-RAG 
 The second part of the Section 15 is Self-Rag implementation.
+
+
+### Adaptive Rag
+The essence of the implementation is to use a question router,which points to a different parts of the flow.
+The router will check if the user question can be answered from the documents we have in the vector store. And if it's not possible, then it will route to a web search.

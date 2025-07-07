@@ -3,7 +3,6 @@ from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_core.runnables import RunnableSequence
 from langchain_openai import ChatOpenAI
 
-
 llm = ChatOpenAI(temperature=0)
 
 
@@ -26,5 +25,6 @@ answer_prompt = ChatPromptTemplate.from_messages(
         ("system", system),
         ("human", "User question: \n\n {question} \n\n LLM generation: {answer}"),
     ]
+)
 
-answer_grader: RunnaleSequence = answer_prompt | structured_llm_grader
+answer_grader: RunnableSequence = answer_prompt | structured_llm_grader
