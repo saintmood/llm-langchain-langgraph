@@ -12,3 +12,7 @@ The implementaiton is base on 3 papers:
 
 
 General idea of these papers is to add a reflection into the flow.
+
+
+### Self-RAG 
+The second part of the Section 15 is Self-Rag implementation.
